@@ -175,63 +175,38 @@ fun DisplayValues(measurementViewModel: MeasurementViewModel) {
                 text = "Z:",
             )
         }
-        DisplayGyroColumn(measurementViewModel)
-        DisplayAccelColumn(measurementViewModel)
+        MeasurementsColumn("Gyro", measurementViewModel.gyroMeasurement)
+        MeasurementsColumn("Acc", measurementViewModel.accelMeasurement)
     }
 }
 
 @Composable
-fun DisplayGyroColumn(measurementViewModel: MeasurementViewModel) {
-    val measurementData by measurementViewModel.gyroMeasurement.collectAsState()
+fun MeasurementsColumn(
+    title: String,
+    measurements: StateFlow<Measurement>,
+) {
+    val measurement by measurements.collectAsState()
 
     Column {
         Text(
             modifier = Modifier.width(50.dp),
             textAlign = TextAlign.Center,
-            text = "Gyro",
+            text = title,
         )
         Text(
             modifier = Modifier.width(50.dp),
             textAlign = TextAlign.Right,
-            text = "%.2f".format(measurementData.x),
+            text = "%.2f".format(measurement.x),
         )
         Text(
             modifier = Modifier.width(50.dp),
             textAlign = TextAlign.Right,
-            text = "%.2f".format(measurementData.y),
+            text = "%.2f".format(measurement.y),
         )
         Text(
             modifier = Modifier.width(50.dp),
             textAlign = TextAlign.Right,
-            text = "%.2f".format(measurementData.z),
-        )
-    }
-}
-
-@Composable
-fun DisplayAccelColumn(measurementViewModel: MeasurementViewModel) {
-    val measurementData by measurementViewModel.accelMeasurement.collectAsState()
-
-    Column {
-        Text(
-            modifier = Modifier.width(50.dp),
-            textAlign = TextAlign.Center,
-            text = "Acc",
-        )
-        Text(
-            modifier = Modifier.width(50.dp),
-            textAlign = TextAlign.Right,
-            text = "%.2f".format(measurementData.x),
-        )
-        Text(
-            modifier = Modifier.width(50.dp),
-            textAlign = TextAlign.Right,
-            text = "%.2f".format(measurementData.y),
-        )
-        Text(
-            modifier = Modifier.width(50.dp),
-            textAlign = TextAlign.Right,
-            text = "%.2f".format(measurementData.z),
+            text = "%.2f".format(measurement.z),
         )
     }
 }
