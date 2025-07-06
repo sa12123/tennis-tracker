@@ -34,7 +34,6 @@ import androidx.wear.compose.material.MaterialTheme
 import androidx.wear.compose.material.Text
 import androidx.wear.compose.material.TimeText
 import androidx.wear.tooling.preview.devices.WearDevices
-import com.example.tennistracker.R
 import com.example.tennistracker.common.Measurement
 import com.example.tennistracker.presentation.theme.TennisTrackerTheme
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -153,8 +152,6 @@ fun SensorValuesScreen(measurementViewModel: MeasurementViewModel = MeasurementV
 
 @Composable
 fun DisplayValues(measurementViewModel: MeasurementViewModel) {
-    val measurementData by measurementViewModel.gyroMeasurement.collectAsState()
-
     Row {
         Column {
             Text(
