@@ -22,3 +22,4 @@ dependencyResolutionManagement {
 rootProject.name = "TennisTracker"
 include(":mobile")
 include(":wear")
+include(":common")

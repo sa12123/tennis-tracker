@@ -35,17 +35,12 @@ import androidx.wear.compose.material.Text
 import androidx.wear.compose.material.TimeText
 import androidx.wear.tooling.preview.devices.WearDevices
 import com.example.tennistracker.R
+import com.example.tennistracker.common.Measurement
 import com.example.tennistracker.presentation.theme.TennisTrackerTheme
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
-
-data class Measurement(
-    val x: Float,
-    val y: Float,
-    val z: Float,
-)
 
 class MeasurementViewModel : ViewModel() {
     fun setAccelMeasurement(newMeasurement: Measurement) {
